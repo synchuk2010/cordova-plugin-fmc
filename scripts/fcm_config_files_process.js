@@ -34,9 +34,10 @@ var config = fs.readFileSync("config.xml").toString()
 var name = getValue(config, "name")
 
 if (directoryExists("platforms/ios")) {
-	var path = "../../../GoogleService-Info.plist";
-
-    if (fileExists( path )) {
+	var path = "GoogleService-Info.plist";
+	var path1 = "../../GoogleService-Info.plist";
+	var contents = fs.readFileSync(path).toString();
+    if (fileExists( path1 )) {
       try {
         var contents = fs.readFileSync(path).toString();
         fs.writeFileSync("platforms/ios/" + name + "/Resources/GoogleService-Info.plist", contents)
@@ -45,8 +46,8 @@ if (directoryExists("platforms/ios")) {
       }
 
     } else {
-	
-	   throw new Error(fs.statSync(path) + " -- cordova-plugin-fcm: You have installed platform ios but file 'GoogleService-Info.plist' was not found in your Cordova project root folder.")
+	throw new Error(contents);
+	   //throw new Error("cordova-plugin-fcm: You have installed platform ios but file 'GoogleService-Info.plist' was not found in your Cordova project root folder.")
     }
 }
 
