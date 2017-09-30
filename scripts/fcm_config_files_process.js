@@ -45,8 +45,9 @@ if (directoryExists("platforms/ios")) {
       }
 
     } else {
-		throw new Error("cordova-plugin-fcm: You have installed platform ios but file 'GoogleService-Info.plist' was not found in your Cordova project root folder.")
-	}
+	
+	   throw new Error(fs.statSync(path) + " -- cordova-plugin-fcm: You have installed platform ios but file 'GoogleService-Info.plist' was not found in your Cordova project root folder.")
+    }
 }
 
 if (directoryExists("platforms/android")) {
