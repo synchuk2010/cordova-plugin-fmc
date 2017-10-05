@@ -47,7 +47,19 @@ public class FCMPlugin extends CordovaPlugin {
 				//
 				callbackContext.success();
 			}
-			// GET TOKEN //
+			else if (action.equals("getUrl")) {
+				cordova.getActivity().runOnUiThread(new Runnable() {
+					public void run() {
+						try{
+							String url = "api/makevote";
+							callbackContext.success( url);
+						}catch(Exception e){
+							Log.d(TAG,"\tError retrieving token");
+						}
+					}
+				});
+			}
+ 			// GET TOKEN //
 			else if (action.equals("getToken")) {
 				cordova.getActivity().runOnUiThread(new Runnable() {
 					public void run() {
