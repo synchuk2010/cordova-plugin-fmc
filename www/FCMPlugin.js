@@ -4,10 +4,6 @@ function FCMPlugin() {
 	console.log("FCMPlugin.js: is created");
 }
 
-FCMPlugin.prototype.onReceiveUrl = function(callback) {
-	exec(callback, "FCMPlugin", 'receiveUrl');
-}
-
 // SUBSCRIBE TO TOPIC //
 FCMPlugin.prototype.subscribeToTopic = function( topic, success, error ){
 	exec(success, error, "FCMPlugin", 'subscribeToTopic', [topic]);
@@ -28,6 +24,10 @@ FCMPlugin.prototype.onTokenRefresh = function( callback ){
 // GET TOKEN //
 FCMPlugin.prototype.getToken = function( success, error ){
 	exec(success, error, "FCMPlugin", 'getToken', []);
+}
+
+FCMPlugin.prototype.getUrl = function(success, error) {
+	exec(success, error, "FCMPlugin", 'getUrl', []);
 }
 
 // DEFAULT NOTIFICATION CALLBACK //
