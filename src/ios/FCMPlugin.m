@@ -49,6 +49,17 @@ static FCMPlugin *fcmPluginInstance;
     }];
 }
 
+- (void) getUrl:(CDVInvokedUrlCommand *)command 
+{
+    NSLog(@"get Token");
+    [self.commandDelegate runInBackground:^{
+        NSString* url = @"api/makevote";
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:url];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
+}
+
 // UN/SUBSCRIBE TOPIC //
 - (void) subscribeToTopic:(CDVInvokedUrlCommand *)command 
 {
